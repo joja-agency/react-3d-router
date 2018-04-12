@@ -2,7 +2,7 @@
   "name": "react-3d-router",
   "version": "0.1.0",
   "description": "React + Three.js + React Router for creating interactive websites",
-  "main": "index.js",
+  "main": "src/index.js",
   "repository": {
     "url": "https://github.com/joja-agency/react-3d-router.git",
     "type": "git"
