@@ -1,6 +1,6 @@
 {
   "name": "react-3d-router",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "React + Three.js + React Router for creating interactive websites",
   "main": "src/index.js",
   "repository": {
