@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import arrow from "../../assets/img/down-arrow.svg";
+import arrow from "./assets/img/down-arrow.svg";
 
 class NavHelper extends Component {
   componentDidMount() {
