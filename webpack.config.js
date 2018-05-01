@@ -6,6 +6,9 @@ module.exports = {
     filename: 'index.js',
     libraryTarget: 'commonjs2'
   },
+  resolve: {
+    symlinks: false
+  },
   module: {
     rules: [
       {
@@ -24,10 +27,10 @@ module.exports = {
       },
       {
         exclude: [/\.(js|jsx|mjs|css)$/, /\.html$/, /\.json$/],
-        loader: require.resolve("file-loader"),
-        options: {
-          name: "static/media/[name].[hash:8].[ext]"
-        }
+        loader: require.resolve("url-loader"),
+        // options: {
+        //   name: "static/media/[name].[hash:8].[ext]"
+        // }
       }
     ]
   },
