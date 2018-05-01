@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { withRouter } from "react-router";
 import Three from "./Three";
 import TransitionController from "./TransitionController";
-import "./style.css";
+import "./assets/css/style.css";
 
 // TODO:
 // Reformat ComponentList, so that parent component nests children
@@ -36,9 +36,9 @@ class React3dNavigation extends Component {
   findChildrenByPath(path) {
     let component = findComponentByPath(path);
     if (component && component.children) {
-      let components = component.children.map(childName => {
-        return getComponent(childName);
-      });
+      let components = component.children.map(childName =>
+        getComponent(childName)
+      );
       this.setState({ sections: components });
     }
   }
@@ -89,7 +89,24 @@ const findComponentByPath = path => {
   const key = Object.keys(components).find(
     key => components[key].path === path
   );
-  return components[key];
+
+  let valid = validateComponent(components[key]);
+
+  if (valid) {
+    return components[key];
+  } else if (components["Error"]) {
+    return components["Error"];
+  } else {
+    throw `Component for path "${path}" not found. Please specify component by name "Error" to display 404's`;
+  }
+};
+
+const validateComponent = component => {
+  if (!component) return false;
+
+  if (!component.component) return false;
+
+  return true;
 };
 
 export const setMovement = () => {
@@ -106,6 +123,5 @@ const transitionThree = (...args) => ThreeObject.setCamPosition(...args);
 const getComponent = name => {
   return components[name] ? components[name] : null;
 };
-
 
 export default withRouter(React3dNavigation);

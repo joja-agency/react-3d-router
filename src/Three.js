@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import * as THREE from "three";
-import controls from "./OrbitControls";
+import controls from "./utils/OrbitControls";
 import TWEEN from "@tweenjs/tween.js";
 //import { isMobile } from "react-device-detect";
 

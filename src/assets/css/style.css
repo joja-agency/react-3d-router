@@ -1,12 +1,12 @@
 #canvasContainer {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: -1;
 }
 
 .toggleThreeZ {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   z-index: 100;

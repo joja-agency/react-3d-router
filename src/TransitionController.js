@@ -35,12 +35,14 @@ class TransitionController extends Component {
 
   startInitialTransition() {
     const { sections } = this.props;
-
-    if (this.activeSection) {
-      this.activeSection.enterTransition(
-        sections[this.state.index].time / 1000
-      );
-    }
+    
+    if (sections.length) this.transitionToIndex(this.state.index)
+    
+    // if (this.activeSection && this.activeSection.enterTransition) {
+    //   this.activeSection.enterTransition(
+    //     sections[this.state.index].time / 1000
+    //   );
+    // }
   }
 
   resetState() {
@@ -84,7 +86,7 @@ class TransitionController extends Component {
     const { sections } = this.props;
 
     this.setState({ active: true });
-    if (this.activeSection.enterTransition) {
+    if (this.activeSection && this.activeSection.enterTransition) {
       this.activeSection.enterTransition(
         sections[this.state.index].time / 1000
       );
@@ -110,11 +112,14 @@ class TransitionController extends Component {
       this.state.lastIndex !== null
         ? sections[this.state.lastIndex].component
         : sections[this.state.index].component; //render first slide two times
+    
     let ActiveSection = sections[this.state.index].component;
 
     return (
       <div className="page">
-        <LastSection ref={el => (this.lastSection = el)} />
+        {(sections.length !== 1) && //if only one section - render one instance
+          <LastSection ref={el => (this.lastSection = el)} />
+        }
         <ActiveSection ref={el => (this.activeSection = el)} />
 
         <NavHelper
