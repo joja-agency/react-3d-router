@@ -49,7 +49,7 @@ class React3dNavigation extends Component {
   }
 
   render() {
-    const { object3d, background, initialPos, devMode } = this.props;
+    const { object3d, background, initialPos, material, rotation, devMode } = this.props;
 
     return (
       <div className="react3dnavigation">
@@ -63,6 +63,8 @@ class React3dNavigation extends Component {
           object={object3d}
           background={background}
           initialPos={initialPos}
+          rotation = {rotation}
+          material = {material}
         />
 
         {devMode && (

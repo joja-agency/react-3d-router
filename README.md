@@ -37,5 +37,5 @@ const Components = {
 Convert your own 3d object (.obj format) to suitable .json format via command line:
 
 ```
-node node_modules/react-3d-router/utils/obj2three.js model.obj
+node node_modules/react-3d-router/src/utils/obj2three.js model.obj
 ```
