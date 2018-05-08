@@ -9,7 +9,7 @@ import {toggleThreeZStyle} from './assets/styles'
 // Reformat ComponentList, so that parent component nests children
 // and remove coords, etc from parent component to use it's first child
 
-let ThreeObject = {};
+let ThreeObject = null;
 let components = [];
 
 class React3dNavigation extends Component {
@@ -18,16 +18,24 @@ class React3dNavigation extends Component {
     this.three = {};
     this.state = { sections: [] };
     components = props.components;
+
+    //set initial components from url
+    let component = findComponentByPath(this.props.location.pathname);
+    if (component && component.children) {
+      let components = component.children.map(childName =>
+        getComponent(childName)
+      );
+      this.state = ({ sections: components });
+    }
   }
 
   componentDidMount() {
+    
     //assign the instance to global ref
     ThreeObject = this.three;
 
-    //navigate to initial component
+    //navigate to initial component (three.js is ready)
     transition(this.props.location.pathname);
-
-    this.findChildrenByPath(this.props.location.pathname);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -41,6 +49,7 @@ class React3dNavigation extends Component {
         getComponent(childName)
       );
       this.setState({ sections: components });
+      return components
     }
   }
 
@@ -121,7 +130,12 @@ export const stopMovement = () => {
 };
 
 //direct three.js transition for TransitionController
-const transitionThree = (...args) => ThreeObject.setCamPosition(...args);
+const transitionThree = (...args) => {
+  //Three will not be initialized on first call/SSR
+  if (ThreeObject){
+    ThreeObject.setCamPosition(...args);
+  }
+}
 
 const getComponent = name => {
   return components[name] ? components[name] : null;

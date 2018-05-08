@@ -5,8 +5,6 @@ import TWEEN from "@tweenjs/tween.js";
 //import { isMobile } from "react-device-detect";
 import {canvasContainerStyle} from './assets/styles'
 
-
-
 class Three extends Component {
 
   componentDidMount() {
@@ -173,7 +171,7 @@ class Three extends Component {
   };
 
   render() {
-    return <div style = {canvasContainerStyle} id="canvasContainer" onClick={this.onCanvasClick} />;
+    return <div id="canvasContainer" style = {canvasContainerStyle} onClick={this.onCanvasClick} />;
   }
 }
 
