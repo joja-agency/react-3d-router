@@ -20,12 +20,6 @@ module.exports = {
         }
       },
       {
-        test: /\.css$/,
-        include: path.resolve(__dirname, 'src'),
-        exclude: /(node_modules|build)/,
-        use: [ 'style-loader','css-loader' ]
-      },
-      {
         exclude: [/\.(js|jsx|mjs|css)$/, /\.html$/, /\.json$/],
         loader: require.resolve("url-loader"),
         // options: {

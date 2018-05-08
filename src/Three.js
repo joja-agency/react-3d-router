@@ -3,6 +3,9 @@ import * as THREE from "three";
 import controls from "./utils/OrbitControls";
 import TWEEN from "@tweenjs/tween.js";
 //import { isMobile } from "react-device-detect";
+import {canvasContainerStyle} from './assets/styles'
+
+
 
 class Three extends Component {
 
@@ -170,7 +173,7 @@ class Three extends Component {
   };
 
   render() {
-    return <div id="canvasContainer" onClick={this.onCanvasClick} />;
+    return <div style = {canvasContainerStyle} id="canvasContainer" onClick={this.onCanvasClick} />;
   }
 }
 

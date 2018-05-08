@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { withRouter } from "react-router";
 import Three from "./Three";
 import TransitionController from "./TransitionController";
-import "./assets/css/style.css";
+import {toggleThreeZStyle} from './assets/styles'
+// import "./assets/css/style.css";
 
 // TODO:
 // Reformat ComponentList, so that parent component nests children
@@ -68,7 +69,7 @@ class React3dNavigation extends Component {
         />
 
         {devMode && (
-          <div className="toggleThreeZ" onClick={this.toggleDev}>
+          <div className="toggleThreeZ" style = {toggleThreeZStyle} onClick={this.toggleDev}>
             toggleZindex
           </div>
         )}
